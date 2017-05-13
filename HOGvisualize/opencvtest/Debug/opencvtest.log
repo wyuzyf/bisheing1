@@ -1,0 +1,21 @@
+﻿生成启动时间为 2016/3/24 21:48:06。
+     1>项目“F:\美团杯\HOGvisualize\opencvtest\opencvtest.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\software\VS2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp readme.cpp
+         readme.cpp
+         main.cpp
+     1>f:\美团杯\hogvisualize\opencvtest\main.cpp(20): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>f:\美团杯\hogvisualize\opencvtest\main.cpp(152): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>f:\美团杯\hogvisualize\opencvtest\main.cpp(153): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>f:\美团杯\hogvisualize\opencvtest\main.cpp(164): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>f:\美团杯\hogvisualize\opencvtest\main.cpp(165): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+         正在生成代码...
+       Link:
+         D:\software\VS2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\美团杯\HOGvisualize\Debug\opencvtest.exe" /INCREMENTAL /NOLOGO opencv_core249d.lib opencv_imgproc249d.lib opencv_highgui249d.lib opencv_ml249d.lib opencv_video249d.lib opencv_features2d249d.lib opencv_calib3d249d.lib opencv_objdetect249d.lib opencv_contrib249d.lib opencv_legacy249d.lib opencv_flann249d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\美团杯\HOGvisualize\Debug\opencvtest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\美团杯\HOGvisualize\Debug\opencvtest.lib" /MACHINE:X86 Debug\main.obj
+         Debug\readme.obj
+         opencvtest.vcxproj -> F:\美团杯\HOGvisualize\Debug\opencvtest.exe
+     1>已完成生成项目“F:\美团杯\HOGvisualize\opencvtest\opencvtest.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.96

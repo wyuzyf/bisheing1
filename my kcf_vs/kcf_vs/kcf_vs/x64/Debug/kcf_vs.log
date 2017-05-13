@@ -1,0 +1,18 @@
+﻿生成启动时间为 2017/5/4 星期四 16:29:04。
+     1>项目“F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\kcf_vs\kcf_vs.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS13\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt fhog.cpp
+         fhog.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+       Link:
+         E:\VS13\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\x64\Debug\kcf_vs.exe" /INCREMENTAL /NOLOGO opencv_world310.lib opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\x64\Debug\kcf_vs.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\x64\Debug\kcf_vs.lib" /MACHINE:X64 x64\Debug\fhog.obj
+         x64\Debug\kcftracker.obj
+         x64\Debug\runtracker.obj
+         kcf_vs.vcxproj -> F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\x64\Debug\kcf_vs.exe
+     1>已完成生成项目“F:\singlechip\a\bisheing\my kcf_vs\kcf_vs\kcf_vs\kcf_vs.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.57
