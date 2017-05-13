@@ -1,0 +1,557 @@
+﻿/*
+
+Tracker based on Kernelized Correlation Filter (KCF) [1] and Circulant Structure with Kernels (CSK) [2].
+CSK is implemented by using raw gray level features, since it is a single-channel filter.
+KCF is implemented by using HOG features (the default), since it extends CSK to multiple channels.
+
+[1] J. F. Henriques, R. Caseiro, P. Martins, J. Batista,
+"High-Speed Tracking with Kernelized Correlation Filters", TPAMI 2015.
+
+[2] J. F. Henriques, R. Caseiro, P. Martins, J. Batista,
+"Exploiting the Circulant Structure of Tracking-by-detection with Kernels", ECCV 2012.
+
+Authors: Joao Faro, Christian Bailer, Joao F. Henriques
+Contacts: joaopfaro@gmail.com, Christian.Bailer@dfki.de, henriques@isr.uc.pt
+Institute of Systems and Robotics - University of Coimbra / Department Augmented Vision DFKI
+
+Constructor parameters, all boolean:
+	hog: use HOG features (default), otherwise use raw pixels
+	fixed_window: fix window size (default), otherwise use ROI size (slower but more accurate)
+	multiscale: use multi-scale tracking (default; cannot be used with fixed_window = true)
+
+Default values are set for all properties of the tracker depending on the above choices.
+Their values can be customized further before calling init():
+	interp_factor: linear interpolation factor for adaptation
+	sigma: gaussian kernel bandwidth 
+	lambda: regularization
+	cell_size: HOG cell size
+	padding: area surrounding the target, relative to its size
+	output_sigma_factor: bandwidth of gaussian target
+	template_size: template size in pixels, 0 to use ROI size
+	scale_step: scale step for multi-scale estimation, 1 to disable it
+	scale_weight: to downweight detection scores of other scales for added stability
+
+For speed, the value (template_size/cell_size) should be a power of 2 or a product of small prime numbers.
+
+Inputs to init():
+   image is the initial frame.
+   roi is a cv::Rect with the target positions in the initial frame
+
+Inputs to update():
+   image is the current frame.
+
+Outputs of update():
+   cv::Rect with target positions for the current frame
+
+By downloading, copying, installing or using the software you agree to this license.
+If you do not agree to this license, do not download, install,
+copy or use the software.
+
+						  License Agreement
+			   For Open Source Computer Vision Library
+					   (3-clause BSD License)
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice,
+	this list of conditions and the following disclaimer.
+
+  * Redistributions in binary form must reproduce the above copyright notice,
+	this list of conditions and the following disclaimer in the documentation
+	and/or other materials provided with the distribution.
+
+  * Neither the names of the copyright holders nor the names of the contributors
+	may be used to endorse or promote products derived from this software
+	without specific prior written permission.
+
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are disclaimed.
+In no event shall copyright holders or contributors be liable for any direct,
+indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused
+and on any theory of liability, whether in contract, strict liability,
+or tort (including negligence or otherwise) arising in any way out of
+the use of this software, even if advised of the possibility of such damage.
+ */
+
+/*
+http://blog.csdn.net/shenxiaolu1984/article/details/50905283
+一般化的跟踪问题可以分解成如下几步：
+1. 在It帧中，在当前位置pt附近采样，训练一个回归器。这个回归器能计算一个小窗口采样的响应。
+2. 在It+1帧中，在前一帧位置pt附近采样，用前述回归器判断每个采样的响应。
+3. 响应最强的采样作为本帧位置pt+1。
+*/
+
+/*
+http://blog.csdn.net/ikerpeng/article/details/40144497
+1) 读入视频流，鼠标框选groundtruth信息，也就得到了object的位置和大小的信息；
+   然后得到一个在目标框图内目标的分布函数（高斯的分布，这一点我不是很明白，和公式里面不一样）；
+*/
+
+#ifndef _KCFTRACKER_HEADERS
+#include "kcftracker.hpp"
+#include "ffttools.hpp"
+#include "recttools.hpp"
+#include "fhog.hpp"
+#include "labdata.hpp"
+#endif
+
+// Constructor 构造函数，变量初始赋值
+KCFTracker::KCFTracker(bool hog, bool fixed_window, bool multiscale, bool lab)
+{
+	// Parameters equal in all cases
+	lambda = 0.0001;
+	padding = 2.5; 
+	output_sigma_factor = 0.125;
+
+	if (hog) {    // HOG
+		// VOT
+		//interp_factor = 0.012;
+		//sigma = 0.6; 
+		// TPAMI
+		interp_factor = 0.02;
+		sigma = 0.5; 
+		cell_size = 8;
+		_hogfeatures = true;
+
+		if (lab) {  // lab
+			interp_factor = 0.005;
+			sigma = 0.4; 
+			//output_sigma_factor = 0.025;
+			output_sigma_factor = 0.1;
+
+			_labfeatures = true;
+			_labCentroids = cv::Mat(nClusters, 3, CV_32FC1, &data);
+			cell_sizeQ = cell_size*cell_size;
+		}
+		else{
+			_labfeatures = false;
+		}
+	} // (hog)
+	else {   // RAW
+		interp_factor = 0.075;
+		sigma = 0.2; 
+		cell_size = 1;
+		_hogfeatures = false;
+
+		if (lab) {
+			printf("Lab features are only used with HOG features.\n");
+			_labfeatures = false;
+		}
+	}
+
+	if (multiscale) { // multiscale
+		template_size = 96;
+		scale_step = 1.05;
+		scale_weight = 0.95;
+		if (!fixed_window) {
+			// 多尺度 只支持 固定窗口
+			//printf("Multiscale does not support non-fixed window.\n");
+			fixed_window = true;
+		}
+	}
+	else if (fixed_window) {  // fit correction without multiscale
+		template_size = 96;
+		//template_size = 100;
+		scale_step = 1;
+	}
+	else {
+		template_size = 1;
+		scale_step = 1;
+	}
+}
+
+// Initialize tracker 
+void KCFTracker::init(const cv::Rect &roi, cv::Mat image)
+{
+	_roi = roi;
+	assert(roi.width >= 0 && roi.height >= 0);   // assert (condition);  condition is false, the program will abort/stop
+	_tmpl = getFeatures(image, 1); // template: 31 rows * (sizeX * sizeY) cols
+	// alpha里面的Y(即_prob)到底是什么？按照原来的公式应该是标签的，但最终怎么成了一个高斯的分布？
+	//（好像有点懂了，因为他不是像别人那样直接给目标标签定为1或者是0，而是一个确信度，难道这就是回归的思想）
+	_prob = createGaussianPeak(size_patch[0], size_patch[1]); 
+	_alphaf = cv::Mat(size_patch[0], size_patch[1], CV_32FC2, float(0));
+
+	train(_tmpl, 1.0); // train with initial frame
+ }
+
+// Update position based on the new frame
+cv::Rect KCFTracker::update(cv::Mat image)
+{
+	// 限制框选区域的位置
+	if (_roi.x + _roi.width <= 0) _roi.x = -_roi.width + 1;
+	if (_roi.y + _roi.height <= 0) _roi.y = -_roi.height + 1;
+	if (_roi.x >= image.cols - 1) _roi.x = image.cols - 2;
+	if (_roi.y >= image.rows - 1) _roi.y = image.rows - 2;
+
+	// 区域中心位置
+	float cx = _roi.x + _roi.width / 2.0f;
+	float cy = _roi.y + _roi.height / 2.0f;
+
+	float peak_value;
+	cv::Point2f res = detect(_tmpl, getFeatures(image, 0, 1.0f), peak_value);
+
+	if (scale_step != 1) 
+	{
+		// Test at a smaller _scale
+		float new_peak_value;
+		cv::Point2f new_res = detect(_tmpl, getFeatures(image, 0, 1.0f / scale_step), new_peak_value);
+
+		if (scale_weight * new_peak_value > peak_value) 
+		{
+			res = new_res;
+			peak_value = new_peak_value;
+			_scale /= scale_step;
+			_roi.width /= scale_step;
+			_roi.height /= scale_step;
+		}
+
+		// Test at a bigger _scale
+		new_res = detect(_tmpl, getFeatures(image, 0, scale_step), new_peak_value);
+
+		if (scale_weight * new_peak_value > peak_value) 
+		{
+			res = new_res;
+			peak_value = new_peak_value;
+			_scale *= scale_step;
+			_roi.width *= scale_step;
+			_roi.height *= scale_step;
+		}
+	}
+
+	// Adjust by cell size and _scale
+	_roi.x = cx - _roi.width / 2.0f + ((float) res.x * cell_size * _scale);
+	_roi.y = cy - _roi.height / 2.0f + ((float) res.y * cell_size * _scale);
+
+	if (_roi.x >= image.cols - 1) _roi.x = image.cols - 1;
+	if (_roi.y >= image.rows - 1) _roi.y = image.rows - 1;
+	if (_roi.x + _roi.width <= 0) _roi.x = -_roi.width + 2;
+	if (_roi.y + _roi.height <= 0) _roi.y = -_roi.height + 2;
+
+	assert(_roi.width >= 0 && _roi.height >= 0);
+	cv::Mat x = getFeatures(image, 0);
+	train(x, interp_factor);
+
+	return _roi;
+}
+
+// Detect object in the current frame.
+cv::Point2f KCFTracker::detect(cv::Mat z, cv::Mat x, float &peak_value)
+{
+	using namespace FFTTools;
+
+	cv::Mat k = gaussianCorrelation(x, z);
+	cv::Mat res = ( real( fftd( complexMultiplication( _alphaf, fftd(k) ), true ) ) );
+
+	//minMaxLoc only accepts doubles for the peak, and integer points for the coordinates    
+	double pv;		// 矩阵中元素最大值
+	cv::Point2i pi; // 矩阵中元素最大值在矩阵中的位置 
+	cv::minMaxLoc(res, NULL, &pv, NULL, &pi); 
+	
+	peak_value = (float) pv;
+
+	//subpixel peak estimation, coordinates will be non-integer
+	cv::Point2f  p( (float)pi.x, (float)pi.y );
+
+	if (pi.x > 0 && pi.x < res.cols-1) 
+		p.x += subPixelPeak(res.at<float>(pi.y, pi.x-1), peak_value, res.at<float>(pi.y, pi.x+1));
+
+	if (pi.y > 0 && pi.y < res.rows-1) 
+		p.y += subPixelPeak(res.at<float>(pi.y-1, pi.x), peak_value, res.at<float>(pi.y+1, pi.x));
+
+	p.x -= (res.cols) / 2;
+	p.y -= (res.rows) / 2;
+
+	return p;
+}
+
+// train tracker with a single image
+void KCFTracker::train(cv::Mat x, float train_interp_factor)
+{
+	using namespace FFTTools;
+
+	cv::Mat k = gaussianCorrelation(x, x);
+	cv::Mat alphaf = complexDivision(_prob, (fftd(k) + lambda));
+	
+	_tmpl = (1 - train_interp_factor) * _tmpl + (train_interp_factor) * x;
+	_alphaf = (1 - train_interp_factor) * _alphaf + (train_interp_factor) * alphaf;
+
+}
+
+// Evaluates a Gaussian kernel with bandwidth SIGMA for all relative shifts between input images X and Y, which must both be MxN. 两矩阵大小相同
+// They must also be periodic (ie., pre-processed with a cosine window).
+cv::Mat KCFTracker::gaussianCorrelation(cv::Mat x1, cv::Mat x2)
+{
+	using namespace FFTTools;
+	cv::Mat c = cv::Mat( cv::Size(size_patch[1], size_patch[0]), CV_32F, cv::Scalar(0) );
+	cv::Mat caux;
+	cv::Mat x1aux;
+	cv::Mat x2aux;
+
+	// HOG features
+	if (_hogfeatures) 
+	{
+		for (int i = 0; i < size_patch[2]; i++) // size_patch[2] = 31 , map->numFeatures
+		{
+			x1aux = x1.row(i);   // Procedure do deal with cv::Mat multichannel bug
+			x1aux = x1aux.reshape(1, size_patch[0]); // channels = 1, rows = size_patch[0], cols = x1aux.cols / rows
+			x2aux = x2.row(i).reshape(1, size_patch[0]); // x2.row(i)是行向量，reshape之后变成 map->sizeY * map->sizeX 的矩阵
+			cv::mulSpectrums(fftd(x1aux), fftd(x2aux), caux, 0, true); // 两张频谱图中每一个元素相乘， 相乘之前取fftd(x2aux)共轭 fftd(x1aux).*conj( fftd(x2aux) ) 
+			caux = fftd(caux, true); // 傅里叶逆变换
+			rearrange(caux);  // 对傅立叶变换的图像进行重排 ?????
+			caux.convertTo(caux,CV_32F);
+			c = c + real(caux);
+		}
+	}
+	// Gray features
+	else
+	{
+		cv::mulSpectrums(fftd(x1), fftd(x2), c, 0, true);
+		c = fftd(c, true);
+		rearrange(c);
+		c = real(c);
+	}
+	cv::Mat d; 
+	// cv::Mat matT = ((cv::sum(x1.mul(x1))[0] + cv::sum(x2.mul(x2))[0]) - 2. * c) / (size_patch[0] * size_patch[1] * size_patch[2]);
+	// 取src1 和 src2 对应的元素的最大值组成输出同样大小的矩阵 d 
+	// cv::sum(x1.mul(x1))[0] 矩阵范数，所有cv::sum()表示元素之和
+	cv::max( ( (cv::sum(x1.mul(x1))[0] + cv::sum(x2.mul(x2))[0]) - 2. * c) / (size_patch[0]*size_patch[1]*size_patch[2]) , 0, d ); //?????
+
+	cv::Mat k;
+	cv::exp((-d / (sigma * sigma)), k);
+	return k;
+}
+
+// Create Gaussian Peak. Function called only in the first frame.
+// 高斯金字塔
+// 首先将范围变成以target中心为原点的分布，然后表示出目标中心可能出现的概率分布；接下来变换到频域里面去。
+// 由此可以看出公式中的y不是我们平时使用的 1 或者是 -1，而是一个可能出现的概率标签。
+cv::Mat KCFTracker::createGaussianPeak(int sizey, int sizex)
+{
+	cv::Mat_<float> res(sizey, sizex); // height = sizey, width = sizex
+	// target中心位置
+	int syh = (sizey) / 2;
+	int sxh = (sizex) / 2;
+
+	// http://www.tuicool.com/articles/eArINbY
+	float output_sigma = std::sqrt((float) sizex * sizey) / padding * output_sigma_factor;
+	// output_sigma 决定了高斯函数的宽度
+	// output_sigma 越大，高斯滤波器的频带就越宽，平滑程度就越好
+	float mult = -0.5 / (output_sigma * output_sigma);  
+
+	for (int i = 0; i < sizey; i++)
+		for (int j = 0; j < sizex; j++)
+		{
+			int ih = i - syh;
+			int jh = j - sxh;
+			res(i, j) = std::exp(mult * (float) (ih * ih + jh * jh));
+		}
+	return FFTTools::fftd(res);
+}
+
+// Obtain sub-window from image, with replication-padding and extract features
+cv::Mat KCFTracker::getFeatures(const cv::Mat &image, bool inithann, float scale_adjust)
+{	
+	// 需要提取出来的区域
+	cv::Rect extracted_roi;
+
+	// _roi 的中心位置
+	float cx = _roi.x + _roi.width / 2;
+	float cy = _roi.y + _roi.height / 2;
+
+	if (inithann) 
+	{	
+		// 扩大区域
+		int padded_w = _roi.width * padding;
+		int padded_h = _roi.height * padding;
+		
+		if (template_size > 1) 
+		{	// Fit largest dimension to the given template size 
+			// 将 padded_w 或 padded_h 中较大值调整为等于template_size，较小值也同比例变化
+			// 变化尺度因子： _scale
+			if (padded_w >= padded_h)  //fit to width
+				_scale = padded_w / (float) template_size;
+			else    // fit to height
+				_scale = padded_h / (float) template_size;
+			
+			_tmpl_sz.width = padded_w / _scale;
+			_tmpl_sz.height = padded_h / _scale;
+		}
+		else 
+		{  //No template size given, use ROI size
+			_tmpl_sz.width = padded_w;
+			_tmpl_sz.height = padded_h;
+			_scale = 1;
+			// original code from paper:
+			/*
+			if (sqrt(padded_w * padded_h) >= 100) {   //Normal size
+				_tmpl_sz.width = padded_w;
+				_tmpl_sz.height = padded_h;
+				_scale = 1;
+			}
+			else {   //ROI is too big, track at half size
+				_tmpl_sz.width = padded_w / 2;
+				_tmpl_sz.height = padded_h / 2;
+				_scale = 2;
+			}*/
+		}
+
+		if(_hogfeatures)
+		{
+			// Round to cell size and also make it even
+			// _tmpl_sz 的宽度和高度的大小应该是(2*cell size)的整数倍，cell size的偶数倍
+			// http://blog.csdn.net/ttransposition/article/details/41806601#t0
+			_tmpl_sz.width = ( ( (int)(_tmpl_sz.width / (2 * cell_size)) ) * 2 * cell_size ) + cell_size * 2;
+			_tmpl_sz.height = ( ( (int)(_tmpl_sz.height / (2 * cell_size)) ) * 2 * cell_size ) + cell_size * 2;
+		}
+		else
+		{	//Make number of pixels even (helps with some logic involving half-dimensions)
+			_tmpl_sz.width = (_tmpl_sz.width / 2) * 2;
+			_tmpl_sz.height = (_tmpl_sz.height / 2) * 2;
+		}
+	}
+
+	extracted_roi.width = scale_adjust * _scale * _tmpl_sz.width;
+	extracted_roi.height = scale_adjust * _scale * _tmpl_sz.height;
+
+	//center roi with new size 
+	extracted_roi.x = cx - extracted_roi.width / 2;
+	extracted_roi.y = cy - extracted_roi.height / 2;
+
+	cv::Mat FeaturesMap;  
+	// 从image截取出区域为extracted_roi的图片
+	cv::Mat z = RectTools::subwindow(image, extracted_roi, cv::BORDER_REPLICATE);
+
+	if (z.cols != _tmpl_sz.width || z.rows != _tmpl_sz.height) 
+		cv::resize(z, z, _tmpl_sz);  // resize 所提取出的区域
+
+	// HOG features
+	if(_hogfeatures) 
+	{
+		IplImage z_ipl = z; // Mat 转 IplImage
+		CvLSVMFeatureMapCaskade *map;
+		
+		// 统计梯度方向直方图 , numFeatures = NUM_SECTOR * 3 
+		getFeatureMaps(&z_ipl, cell_size, &map);
+
+		// 归一化与截断, numFeatures = NUM_SECTOR * 3 * 4
+		normalizeAndTruncate(map, 0.2f);
+
+		// PCA降维,  numFeatures = NUM_SECTOR * 3 + 4
+		PCAFeatureMaps(map);
+
+		size_patch[0] = map->sizeY;
+		size_patch[1] = map->sizeX;
+		size_patch[2] = map->numFeatures;
+
+		// Procedure do deal with cv::Mat multichannel bug
+		FeaturesMap = cv::Mat(cv::Size(map->numFeatures,map->sizeX * map->sizeY), CV_32F, map->map);  // 行号表示cell的索引
+		FeaturesMap = FeaturesMap.t(); // 矩阵转置 第i行表示第i个特征，第j列表示第j个单元格(cell)
+		freeFeatureMapObject(&map);
+
+		// Lab features
+		if (_labfeatures) 
+		{
+			cv::Mat imgLab;
+			cvtColor(z, imgLab, CV_BGR2Lab);
+			unsigned char *input = (unsigned char*)(imgLab.data);
+
+			//Sparse output vector
+			cv::Mat outputLab = cv::Mat(_labCentroids.rows, size_patch[0]*size_patch[1], CV_32F, float(0));
+
+			int cntCell = 0;
+			// Iterate through each cell
+			for (int cY = cell_size; cY < z.rows-cell_size; cY+=cell_size){
+				for (int cX = cell_size; cX < z.cols-cell_size; cX+=cell_size){
+					// Iterate through each pixel of cell (cX,cY)
+					for(int y = cY; y < cY+cell_size; ++y){
+						for(int x = cX; x < cX+cell_size; ++x){
+							// Lab components for each pixel
+							float l = (float)input[(z.cols * y + x) * 3];
+							float a = (float)input[(z.cols * y + x) * 3 + 1];
+							float b = (float)input[(z.cols * y + x) * 3 + 2];
+
+							// Iterate trough each centroid
+							float minDist = FLT_MAX;
+							int minIdx = 0;
+							float *inputCentroid = (float*)(_labCentroids.data);
+							for(int k = 0; k < _labCentroids.rows; ++k)
+							{
+								float dist = ( (l - inputCentroid[3*k]) * (l - inputCentroid[3*k]) )
+										   + ( (a - inputCentroid[3*k+1]) * (a - inputCentroid[3*k+1]) ) 
+										   + ( (b - inputCentroid[3*k+2]) * (b - inputCentroid[3*k+2]) );
+								if(dist < minDist)
+								{
+									minDist = dist;
+									minIdx = k;
+								}
+							}
+							// Store result at output
+							outputLab.at<float>(minIdx, cntCell) += 1.0 / cell_sizeQ; 
+							//((float*) outputLab.data)[minIdx * (size_patch[0]*size_patch[1]) + cntCell] += 1.0 / cell_sizeQ; 
+						}
+					}
+					cntCell++;
+				}
+			}
+			// Update size_patch[2] and add features to FeaturesMap
+			size_patch[2] += _labCentroids.rows;
+			FeaturesMap.push_back(outputLab);
+		}//lab feature
+	}//hog feature
+	else {
+		FeaturesMap = RectTools::getGrayImage(z);
+		FeaturesMap -= (float) 0.5; // In Paper;
+		size_patch[0] = z.rows;
+		size_patch[1] = z.cols;
+		size_patch[2] = 1;  
+	}
+	
+	if (inithann) 
+		createHanningMats();
+	FeaturesMap = hann.mul(FeaturesMap);  //执行两个矩阵按元素相乘
+	return FeaturesMap;
+}
+	
+// Initialize Hanning window. Function called only in the first frame.
+void KCFTracker::createHanningMats()
+{   
+	cv::Mat hann1t = cv::Mat(cv::Size(size_patch[1],1), CV_32F, cv::Scalar(0));	//size_patch[1] = map->sizeX;   行向量
+	cv::Mat hann2t = cv::Mat(cv::Size(1,size_patch[0]), CV_32F, cv::Scalar(0)); //size_patch[0] = map->sizeY;	列向量
+
+	// 一个维度上的表示是这样的： w(n)=0.5（1−cos(2*pi*n/N) ) ,0≤n≤N
+	for (int i = 0; i < hann1t.cols; i++)
+		hann1t.at<float >(0, i) = 0.5 * (1 - std::cos(2 * CV_PI * i / (hann1t.cols - 1)));  //CV_PI = 3.14159265358979323846
+	for (int i = 0; i < hann2t.rows; i++)
+		hann2t.at<float >(i, 0) = 0.5 * (1 - std::cos(2 * CV_PI * i / (hann2t.rows - 1)));
+	// 为了消除边缘的效应和强调中心，使用一个窗口。
+	cv::Mat hann2d = hann2t * hann1t;
+	// HOG features
+	if (_hogfeatures) 
+	{
+		// Procedure do deal with cv::Mat multichannel bug
+		cv::Mat hann1d = hann2d.reshape(1,1); // 第一个参数channels = 1 , 第二个参数rows = 1, OPENCV是行优先
+		
+		hann = cv::Mat(cv::Size(size_patch[0]*size_patch[1], size_patch[2]), CV_32F, cv::Scalar(0));
+		for (int i = 0; i < size_patch[2]; i++) 
+			for (int j = 0; j<size_patch[0]*size_patch[1]; j++) 
+				hann.at<float>(i,j) = hann1d.at<float>(0,j);
+	}
+	// Gray features
+	else 
+		hann = hann2d;
+}
+
+// Calculate sub-pixel peak for one dimension
+float KCFTracker::subPixelPeak(float left, float center, float right)
+{   
+	float divisor = 2 * center - right - left;
+
+	if (divisor == 0)
+		return 0;
+	
+	return 0.5 * (right - left) / divisor;
+}

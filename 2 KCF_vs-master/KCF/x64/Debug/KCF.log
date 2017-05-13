@@ -1,0 +1,12 @@
+﻿生成启动时间为 2017/4/16 星期日 12:21:41。
+     1>项目“F:\singlechip\a\bisheing\2 KCF_vs-master\KCF\KCF.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         E:\VS13\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\singlechip\a\bisheing\2 KCF_vs-master\x64\Debug\KCF.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\SVN\hanwuji\DesktopOS\0.trunk\0.src\thirdparty\OpenCV-Git\x86\vc12\lib" opencv_world310.lib opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\singlechip\a\bisheing\2 KCF_vs-master\x64\Debug\KCF.pdb" /SUBSYSTEM:CONSOLE /STACK:"10000000" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\singlechip\a\bisheing\2 KCF_vs-master\x64\Debug\KCF.lib" /MACHINE:X64 x64\Debug\fhog.obj
+         x64\Debug\kcftracker.obj
+         x64\Debug\runtracker.obj
+         KCF.vcxproj -> F:\singlechip\a\bisheing\2 KCF_vs-master\x64\Debug\KCF.exe
+     1>已完成生成项目“F:\singlechip\a\bisheing\2 KCF_vs-master\KCF\KCF.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.09
