@@ -1,0 +1,53 @@
+﻿生成启动时间为 2017/4/14 星期五 20:44:59。
+     1>项目“F:\singlechip\a\bisheing\myself particle filtert\pf\pf\pf.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS13\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp observation.cpp particles.cpp particles.h utils.cpp
+         utils.cpp
+     1>d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\utils.cpp(60): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\vs13\vc\include\string.h(112) : 参见“strcpy”的声明
+         particles.h
+     1>d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         particles.cpp
+     1>d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(32): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(33): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(54): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(77): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(78): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(80): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(81): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(83): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(84): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\particles.cpp(119): error C2664: “void qsort(void *,size_t,size_t,int (__cdecl *)(const void *,const void *))”: 无法将参数 4 从“int (__cdecl *)(void *,void *)”转换为“int (__cdecl *)(const void *,const void *)”
+                 该转换要求 reinterpret_cast、C 样式转换或函数类型转换
+         observation.cpp
+     1>d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\observation.cpp(127): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\observation.cpp(159): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\observation.cpp(216): warning C4101: “l2”: 未引用的局部变量
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\observation.cpp(255): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\vs13\vc\include\stdio.h(211) : 参见“fopen”的声明
+         main.cpp
+     1>d:\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\main.cpp(56): warning C4237: 目前还不支持“export”关键字，但已保留该关键字供将来使用
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\main.cpp(99): warning C4237: 目前还不支持“export”关键字，但已保留该关键字供将来使用
+     1>f:\singlechip\a\bisheing\myself particle filtert\pf\pf\main.cpp(130): error C2664: “void qsort(void *,size_t,size_t,int (__cdecl *)(const void *,const void *))”: 无法将参数 4 从“int (__cdecl *)(void *,void *)”转换为“int (__cdecl *)(const void *,const void *)”
+                 在匹配目标类型的范围内没有具有该名称的函数
+         正在生成代码...
+     1>已完成生成项目“F:\singlechip\a\bisheing\myself particle filtert\pf\pf\pf.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.38

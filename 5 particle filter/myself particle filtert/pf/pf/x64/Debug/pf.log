@@ -1,0 +1,65 @@
+﻿生成启动时间为 2017/4/14 星期五 21:45:44。
+     1>项目“F:\singlechip\a\bisheing\myself particle filtert\pf\pf\pf.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         E:\VS13\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp observation.cpp particles.cpp particles.h utils.cpp
+         utils.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>utils.cpp(81): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+         particles.h
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         particles.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>particles.cpp(32): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>particles.cpp(33): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>particles.cpp(54): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>particles.cpp(55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>particles.cpp(77): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>particles.cpp(78): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>particles.cpp(80): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>particles.cpp(81): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>particles.cpp(83): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>particles.cpp(84): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+         observation.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>observation.cpp(127): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>observation.cpp(159): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>observation.cpp(216): warning C4101: “l2”: 未引用的局部变量
+         main.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>main.cpp(61): warning C4237: 目前还不支持“export”关键字，但已保留该关键字供将来使用
+     1>main.cpp(249): warning C4101: “file”: 未引用的局部变量
+     1>main.cpp(307): warning C4237: 目前还不支持“export”关键字，但已保留该关键字供将来使用
+     1>main.cpp(279): warning C4101: “y”: 未引用的局部变量
+     1>main.cpp(279): warning C4101: “x”: 未引用的局部变量
+     1>main.cpp(279): warning C4101: “k”: 未引用的局部变量
+     1>main.cpp(271): warning C4101: “hsv_ref_imgs”: 未引用的局部变量
+         正在生成代码...
+       Link:
+         E:\VS13\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\singlechip\a\bisheing\myself particle filtert\pf\x64\Debug\pf.exe" /INCREMENTAL /NOLOGO opencv_world310.lib opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\singlechip\a\bisheing\myself particle filtert\pf\x64\Debug\pf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\singlechip\a\bisheing\myself particle filtert\pf\x64\Debug\pf.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\observation.obj
+         x64\Debug\particles.obj
+         x64\Debug\particles.obj
+         x64\Debug\utils.obj
+     1>x64\Debug\particles.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+     1>main.obj : error LNK2019: 无法解析的外部符号 "struct particle * __cdecl init_distribution(struct CvRect *,struct histogram * *,int,int)" (?init_distribution@@YAPEAUparticle@@PEAUCvRect@@PEAPEAUhistogram@@HH@Z)，该符号在函数 main 中被引用
+     1>main.obj : error LNK2019: 无法解析的外部符号 "struct particle __cdecl transition(struct particle,int,int,class cv::RNG *)" (?transition@@YA?AUparticle@@U1@HHPEAVRNG@cv@@@Z)，该符号在函数 main 中被引用
+     1>main.obj : error LNK2019: 无法解析的外部符号 "void __cdecl normalize_weights(struct particle *,int)" (?normalize_weights@@YAXPEAUparticle@@H@Z)，该符号在函数 main 中被引用
+     1>main.obj : error LNK2019: 无法解析的外部符号 "struct particle * __cdecl resample(struct particle *,int)" (?resample@@YAPEAUparticle@@PEAU1@H@Z)，该符号在函数 main 中被引用
+     1>main.obj : error LNK2019: 无法解析的外部符号 "int __cdecl particle_cmp(void const *,void const *)" (?particle_cmp@@YAHPEBX0@Z)，该符号在函数 main 中被引用
+     1>main.obj : error LNK2019: 无法解析的外部符号 "void __cdecl display_particle(struct _IplImage *,struct particle,struct CvScalar)" (?display_particle@@YAXPEAU_IplImage@@Uparticle@@UCvScalar@@@Z)，该符号在函数 main 中被引用
+     1>F:\singlechip\a\bisheing\myself particle filtert\pf\x64\Debug\pf.exe : fatal error LNK1120: 6 个无法解析的外部命令
+     1>已完成生成项目“F:\singlechip\a\bisheing\myself particle filtert\pf\pf\pf.vcxproj”(Rebuild 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.70

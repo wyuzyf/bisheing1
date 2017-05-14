@@ -1,0 +1,94 @@
+﻿生成启动时间为 2017/4/13 星期四 21:36:54。
+     1>项目“F:\singlechip\a\bisheing\myself particle filtert\particleFilter\particleFilter\particleFilter.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS13\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp pf.cpp
+         main.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(45): error C2146: 语法错误: 缺少“;”(在标识符“rect”的前面)
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(45): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(46): error C2146: 语法错误: 缺少“;”(在标识符“hist”的前面)
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(46): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>main.cpp(97): warning C4129: “s”: 不可识别的字符转义序列
+     1>main.cpp(97): warning C4129: “m”: 不可识别的字符转义序列
+     1>main.cpp(97): warning C4129: “p”: 不可识别的字符转义序列
+         正在生成代码...
+         正在编译...
+         pf.cpp
+     1>D:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(45): error C2146: 语法错误: 缺少“;”(在标识符“rect”的前面)
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(45): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(46): error C2146: 语法错误: 缺少“;”(在标识符“hist”的前面)
+     1>f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(46): error C4430: 缺少类型说明符 - 假定为 int。注意:  C++ 不支持默认 int
+     1>pf.cpp(57): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(60): error C2039: “hist”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(100): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(100): error C2228: “.x”的左边必须有类/结构/联合
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(100): error C2228: “.width”的左边必须有类/结构/联合
+     1>pf.cpp(100): error C2661: “cv::max”: 没有重载函数接受 1 个参数
+     1>pf.cpp(102): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(102): error C2228: “.y”的左边必须有类/结构/联合
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(102): error C2228: “.height”的左边必须有类/结构/联合
+     1>pf.cpp(102): error C2661: “cv::max”: 没有重载函数接受 1 个参数
+     1>pf.cpp(104): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(104): error C2228: “.width”的左边必须有类/结构/联合
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(104): error C2228: “.x”的左边必须有类/结构/联合
+     1>pf.cpp(104): error C2661: “cv::min”: 没有重载函数接受 1 个参数
+     1>pf.cpp(105): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(105): error C2228: “.height”的左边必须有类/结构/联合
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(105): error C2228: “.y”的左边必须有类/结构/联合
+     1>pf.cpp(105): error C2661: “cv::min”: 没有重载函数接受 1 个参数
+     1>pf.cpp(109): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(110): error C2039: “hist”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(110): error C2665: “cv::calcHist”: 3 个重载中没有一个可以转换所有参数类型
+                 D:\opencv\build\include\opencv2/imgproc.hpp(2863): 可能是“void cv::calcHist(cv::InputArrayOfArrays,const std::vector<int,std::allocator<_Ty>> &,cv::InputArray,cv::OutputArray,const std::vector<_Ty,std::allocator<_Ty>> &,const std::vector<float,std::allocator<float>> &,bool)”
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 尝试匹配参数列表“(cv::Mat *, int, int [3], cv::Mat, int, int [3], const float *[3])”时
+     1>pf.cpp(111): error C2039: “hist”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(111): error C2661: “cv::normalize”: 没有重载函数接受 1 个参数
+     1>pf.cpp(114): error C2039: “hist”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(114): error C2661: “cv::compareHist”: 没有重载函数接受 2 个参数
+     1>pf.cpp(178): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(178): error C2228: “.x”的左边必须有类/结构/联合
+     1>pf.cpp(179): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(179): error C2228: “.y”的左边必须有类/结构/联合
+     1>pf.cpp(180): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(180): error C2228: “.width”的左边必须有类/结构/联合
+     1>pf.cpp(181): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(181): error C2228: “.height”的左边必须有类/结构/联合
+     1>pf.cpp(191): error C2039: “rect”: 不是“particle”的成员
+                 f:\singlechip\a\bisheing\myself particle filtert\particlefilter\particlefilter\pf.h(32) : 参见“particle”的声明
+     1>pf.cpp(191): error C2661: “cv::rectangle”: 没有重载函数接受 2 个参数
+         正在生成代码...
+     1>已完成生成项目“F:\singlechip\a\bisheing\myself particle filtert\particleFilter\particleFilter\particleFilter.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.09
