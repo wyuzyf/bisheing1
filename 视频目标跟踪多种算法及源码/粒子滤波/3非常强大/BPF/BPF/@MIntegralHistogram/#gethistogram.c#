@@ -1,0 +1,101 @@
+#include <mex.h>
+#include <matrix.h>
+
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs,
+                 const mxArray *prhs[])
+{
+	mxArray *objWidth, *objHeight, *objNBins;
+	mxArray *histogram, *objOut[1], *objIn[2];
+	mxArray *objIntegralHistogram;
+	double *valHistogram, *ptrRect;
+    double sumHistogram;
+	int width, height, nbins;
+    int isNormalized;
+	int rect[4];
+	int iBins, i, j;
+    int dims[2] = {1, 1};
+    const char *field_names[] = {"data", "integralImage", "width", "height"};
+	
+    // Matlab
+    //   % get width and height of the image
+    //   width = obj.width;
+    //   height = obj.height;
+    //   nbins = obj.nbins;
+	objWidth  = mxGetField(prhs[0], 0, "width");
+	objHeight = mxGetField(prhs[0], 0, "height");
+    objNBins = mxGetField(prhs[0], 0, "nbins");
+	width     = (int)mxGetScalar(objWidth);
+	height    = (int)mxGetScalar(objHeight);
+    nbins    = (int)mxGetScalar(objNBins);
+	
+    // Matlab
+    //   % process the arguments
+    //   if nargin == 1
+    //      rect = [1, 1, obj.width, obj.height];
+    //   elseif nargin == 2 || nargin == 3
+    //      if isempty(rect)
+    //         rect = [1, 1, obj.width, obj.height];
+    //      end
+    //   else
+    //      error('Invalid number of arguments.');
+    //   end
+	if (nrhs == 1) {
+		rect[0] = 1;
+		rect[1] = 1;
+		rect[2] = width;
+		rect[3] = height;
+	} else if ((nrhs == 2) || (nrhs == 3)) {
+    	if (mxIsEmpty(prhs[1])) {
+        	rect[0] = 1;
+			rect[1] = 1;
+			rect[2] = width;
+			rect[3] = height;
+		} else {
+            ptrRect = mxGetPr(prhs[1]);
+            for (i = 0;i < 4;i ++) {
+                rect[i] = (int)ptrRect[i];
+            }
+        }
+	} else {
+    	mexErrMsgTxt("Invalid number of arguments.");
+	}
+    
+    //mexPrintf("(%d, %d, %d, %d)\n", rect[0], rect[1], rect[2], rect[3]);
+    
+	
+	objIn[1] = mxCreateDoubleMatrix(1, 4, mxREAL);
+    ptrRect  = mxGetPr(objIn[1]);
+    for (i = 0;i < 4;i ++) {
+        ptrRect[i] = (double)rect[i];
+	}
+    
+	
+	// compute integral histogram
+    plhs[0] = mxCreateDoubleMatrix(1, nbins, mxREAL);
+    valHistogram = mxGetPr(plhs[0]);
+    
+
+    
+    sumHistogram = 0.0;
+	for (iBins = 0; iBins < nbins; iBins ++) {
+        // get structure array
+		objIntegralHistogram = mxGetField(prhs[0], 0, "integralHistogram");
+        objIn[0] = mxGetCell(objIntegralHistogram, iBins);
+      
+		mexCallMATLAB(1, objOut, 2, objIn, "getregion");
+		
+		valHistogram[iBins] = mxGetScalar(objOut[0]);
+        sumHistogram += valHistogram[iBins];
+	}
+    
+    
+    if (nrhs == 3) {
+        isNormalized = (int)mxGetScalar(prhs[2]);
+        if (isNormalized == 1) {
+            for (iBins = 0;iBins < nbins; iBins ++) {
+                valHistogram[iBins] /= sumHistogram;
+            }
+        }
+    }
+    
+}

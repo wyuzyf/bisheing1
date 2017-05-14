@@ -1,0 +1,41 @@
+#include <mex.h>
+#include <matrix.h>
+
+int sub2ind(int y, int x, int height)
+{
+	return x * height + y;
+}
+
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs,
+                 const mxArray *prhs[])
+{
+    double *inputData, *outputData;
+    int width, height;
+    int x, y;
+    
+    height = mxGetM(prhs[0]);
+    width = mxGetN(prhs[0]);
+	inputData = mxGetPr(prhs[0]);
+    
+    plhs[0] = mxCreateDoubleMatrix(height, width, mxREAL);
+    outputData = mxGetPr(plhs[0]);
+    
+    outputData[sub2ind(0, 0, height)] = inputData[sub2ind(0, 0, height)];
+    for (x = 1;x < width; x++) {
+        outputData[sub2ind(0, x, height)] = outputData[sub2ind(0, x-1, height)] + 
+                                            inputData[sub2ind(0, x, height)];
+    }
+    for (y = 1;y < height;y ++) {
+        outputData[sub2ind(y, 0, height)] = outputData[sub2ind(y-1, 0, height)] +
+                                            inputData[sub2ind(y, 0, height)];
+    }
+    for (y = 1;y < height;y ++) {
+        for (x = 1; x < width; x++) {
+            outputData[sub2ind(y, x, height)] = outputData[sub2ind(y-1, x, height)] +
+                                                outputData[sub2ind(y, x-1, height)] +
+                                                inputData[sub2ind(y, x, height)] -
+                                                outputData[sub2ind(y-1, x-1, height)];
+        }
+    }
+}
+	                 

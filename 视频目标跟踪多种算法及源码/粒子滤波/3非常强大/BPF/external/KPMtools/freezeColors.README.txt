@@ -1,0 +1,39 @@
+Matlab functions for using multiple colormaps per figure
+
+AUTHOR
+John Iversen
+john_iversen@post.harvard.edu
+
+Free for any use, so long as author information remains with code.
+
+CONTENTS
+
+A pair of functions
+
+	freezeColors 	Converts indexed images into [r g b] making them immune to changes in the colormap.
+	unfreezeColors 	Restores the original indexed image, allowing the colormap and caxis to again affect the image. 
+
+DESCRIPTION
+
+Problem: There is only one colormap per figure, so all images share the same colormap. Often one wants different colormaps.
+
+Solution: This function pair provides an easy way to have images using different colomaps in the same figure.
+
+Example:
+subplot(2,1,1)
+imagesc(X)
+colormap hot
+freezeColors
+
+subplot(2,1,2)
+imagesc(Y)
+colormap hsv
+etc...
+
+Note, you can also pass a handle to freezeColors. This is useful if you'd like to freeze the colors of a colorbar:
+
+h=colorbar;
+freezeColors(h), or simply:
+freezeColors(colorbar)
+
+JRI 6/2005
