@@ -1,0 +1,26 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Ignore build directory
+build/
+
+# Ignore OSX trash
+.DS_Store
+
+# Ignore LaTeX trash
+.aux
+.bbl
+.blg
+.fdb_latexmk
+.log
+.synctex.gz

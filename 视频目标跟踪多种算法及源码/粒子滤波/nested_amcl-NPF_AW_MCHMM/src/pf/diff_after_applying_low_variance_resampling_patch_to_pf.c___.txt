@@ -1,0 +1,157 @@
+kedar@ubuntu:~/sim_workspace/navigation/amcl/src/pf$ diff pf.c "pf (original_without_low_variance_resampling_patch).c" 
+55c55
+< 
+---
+>   
+73c73
+< 
+---
+>   
+78c78
+< 
+---
+>       
+116c116
+< 
+---
+>   
+124c124
+< 
+---
+>   
+136c136
+< 
+---
+>   
+138c138
+< 
+---
+>   
+145c145
+< 
+---
+>     
+160c160
+< 
+---
+>     
+197c197
+< 
+---
+>   
+210c210
+< 
+---
+>   
+228c228
+< 
+---
+>   
+249c249
+<     //printf("w_avg: %e slow: %e fast: %e\n",
+---
+>     //printf("w_avg: %e slow: %e fast: %e\n", 
+276,278c276,279
+<   double r,c,U;
+<   int m;
+<   double count_inv;
+---
+>   //double r,c,U;
+>   //int m;
+>   //double count_inv;
+>   double* c;
+284a286,293
+>   // Build up cumulative probability table for resampling.
+>   // TODO: Replace this with a more efficient procedure
+>   // (e.g., http://www.network-theory.co.uk/docs/gslref/GeneralDiscreteDistributions.html)
+>   c = (double*)malloc(sizeof(double)*(set_a->sample_count+1));
+>   c[0] = 0.0;
+>   for(i=0;i<set_a->sample_count;i++)
+>     c[i+1] = c[i]+set_a->samples[i].weight;
+> 
+287c296
+< 
+---
+>   
+297,298c306,308
+<   int M = pf_resample_limit(pf, set_a->kdtree->leaf_count);
+< //  printf("M: %i\n", M);
+---
+>   // Can't (easily) combine low-variance sampler with KLD adaptive
+>   // sampling, so we'll take the more traditional route.
+>   /*
+300c310
+<   count_inv = 1.0/M;
+---
+>   count_inv = 1.0/set_a->sample_count;
+305,306c315,316
+< 
+<   while(set_b->sample_count < M)
+---
+>   */
+>   while(set_b->sample_count < pf->max_samples)
+314c324,326
+< 
+---
+>       // Can't (easily) combine low-variance sampler with KLD adaptive
+>       // sampling, so we'll take the more traditional route.
+>       /*
+333a346
+>       */
+334a348,355
+>       // Naive discrete event sampler
+>       double r;
+>       r = drand48();
+>       for(i=0;i<set_a->sample_count;i++)
+>       {
+>         if((c[i] <= r) && (r < c[i+1]))
+>           break;
+>       }
+350a372,374
+>     // See if we have enough samples yet
+>     if (set_b->sample_count > pf_resample_limit(pf, set_b->kdtree->leaf_count))
+>       break;
+352c376
+< 
+---
+>   
+365c389
+< 
+---
+>   
+371a396
+>   free(c);
+397c422
+< 
+---
+>   
+408c433
+< 
+---
+>   
+416c441
+< 
+---
+>   
+445c470
+< 
+---
+>   
+460c485
+< 
+---
+>     
+493c518
+< 
+---
+>         
+541c566
+< 
+---
+>   
+548c573
+< 
+---
+>   
+kedar@ubuntu:~/sim_workspace/navigation/amcl/src/pf$ 
+
