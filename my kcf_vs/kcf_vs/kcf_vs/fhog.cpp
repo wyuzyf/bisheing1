@@ -55,7 +55,9 @@ int getFeatureMaps(const IplImage* image, const int k, CvLSVMFeatureMapCaskade *
 
 	numChannels = image->nChannels;     //图像通道数
 
-	//作者分别在灰度空间、RGB色彩空间和LAB色彩空间上对图像进行色彩和 伽马归一化，
+	//cvCvtColor(img, dst, CV_BGR2GRAY);
+
+	//作者分别在RGB色彩空间和LAB色彩空间上对图像进行灰度和伽马归一化，
 	//但实验结果显示，这个归一化的预处理工作对最后的结果没有影响，
 	//原因可能是：在后续步骤中也有归一化的过程，那些过程可以取代这个预处理的归 一化。
 	//所以，在实际应用中，这一步可以省略。
