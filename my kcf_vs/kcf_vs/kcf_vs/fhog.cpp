@@ -63,7 +63,7 @@ int getFeatureMaps(const IplImage* image, const int k, CvLSVMFeatureMapCaskade *
 	//所以，在实际应用中，这一步可以省略。
 
 
-	float kernel[3] = {-1.0f,0.0f,1.0f};   //行和列的卷积算子应该不一样，这里是一样的
+	float kernel[3] = {-1.0f,0.0f,1.0f};   //行和列的卷积算子应该不一样，这里是一样的(这个理解是错误的，其实不一样，已经旋转了180度)
 	CvMat kernel_dx = cvMat(1,3,CV_32F,kernel);      //水平梯度卷积算子：行向量
 	CvMat kernel_dy = cvMat(3,1,CV_32F,kernel);   // 垂直梯度卷积算子：列向量
 
