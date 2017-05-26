@@ -1,0 +1,300 @@
+<zuiprezi><version>7</version><zui-table><settings>
+									<autoplay>
+										<delay>4000</delay>
+									</autoplay>
+								<bounds x="-58636.873400376986" y="-36541.28918729277" width="117273.74680075397" height="73082.57837458554"/><aspectratio>off</aspectratio><languages><language>en</language></languages><mode type="normal"/></settings><object id="20" type="button" x="0" y="0" r="0" s="122.007643363248" class="invisible"><type>invisible</type><size><w>962.2377622377622</w><h>600</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="OVERVIEW"/></layout></object><object id="0" type="button" x="-476.60565732809374" y="174.4631225719665" r="0" s="37.632545094148995" class="circle"><type>circle</type><size><w>800</w><h>800</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="SECTION"/></layout></object><object id="3" type="button" x="-35438.6" y="7056.15" r="0" s="23.880159471315988" class="circle"><type>circle</type><size><w>800</w><h>800</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="SECTION"/></layout></object><object id="4" type="shape" x="-19993.59837907209" y="8293.759860236009" r="-8.827870066716859" s="78.07443879221029" class="line3"><geom type="arrow"><sp>60.318608383180695 -5.833236783071967</sp><ep>-60.31860838318069 -5.833236783071997</ep><b>-11.666473566143964</b><t>8</t></geom><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta></object><object id="5" type="button" x="-25740.980399746648" y="-15773.25899166711" r="0" s="17.121222149945126" class="circle"><type>circle</type><size><w>800</w><h>800</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="SECTION"/></layout></object><object id="6" type="button" x="33849.5508906964" y="2527.8684865857135" r="0.25418189785375145" s="26.858585933271858" class="circle"><type>circle</type><size><w>800</w><h>800</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="SECTION"/></layout></object><object id="7" type="shape" x="-17230.835007031557" y="-10748.375720731035" r="-151.75574892919897" s="78.07443879221009" class="line3"><geom type="arrow"><sp>-31.786658243000566 0</sp><ep>31.786658243000566 0</ep><t>8</t></geom><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta></object><object id="8" type="shape" x="18962.58406377612" y="6132.79405953516" r="-177.0569971524504" s="78.07443879221073" class="line3"><geom type="arrow"><sp>44.442415108061475 7.338596070382925</sp><ep>-44.44241510806148 7.338596070382915</ep><b>14.67719214076584</b><t>8</t></geom><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta></object><object id="9" type="button" x="23013.950670696806" y="-19409.105097056523" r="0" s="20.770676526303845" class="circle"><type>circle</type><size><w>871.4319883887766</w><h>871.4319883887766</h></size><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><frametype value="SECTION"/></layout></object><object id="10" type="shape" x="12596.994250797872" y="-13122.759690792269" r="132.99171862535846" s="55.76745628015011" class="line3"><geom type="arrow"><sp>30 0</sp><ep>-30 0</ep><t>8</t></geom><meta><notModifiedByUser>from-template</notModifiedByUser><parentTemplate>explain-a-topic-dark</parentTemplate></meta></object><object id="3_30863873" type="text" x="-35637.32626617597" y="-288.7459831389169" r="0" s="52.64554859058791" class="body"><height>27.375</height><width>220.4993900181616</width><p align="center"><text><![CDATA[硬件整体结构]]></text></p><meta><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><layout-element role="title" parent-id="3"/></layout></object><object id="29" type="button" x="33499.578782730656" y="-3957.471064642527" r="0.2541818978537516" s="13.440713288880191" class="invisible"><type>invisible</type><size><w>814.4699975108535</w><h>423.25742597298773</h></size></object><object id="11_30863873" type="text" x="33615.23019478661" y="-3914.453393173752" r="0.2541818978537517" s="20.780973589738778" class="body"><height>246.375</height><width>511.17505795135617</width><p><text><![CDATA[    基于核相关滤波的目标跟踪模型属于判别模型，其跟踪过程实际是一个正负二分类问题。与传统判决模型不同，分类器的训练样本采用密集采样算法，使用连续的标签进行标记样本，通过使用[0,1]区间内的值作为样本的回归目标值，对不同偏移下得到的样本得到相应的不同的权重。同时，引入核函数将特征空间映射到更高维的空间，有效利用核矩阵的高度结构化，使得训练更加高效。]]></text></p><meta><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><layout-element role="title" parent-id="6"/></layout></object><object id="12_4" type="text" x="-1228.239618502079" y="-9496.457695211038" r="0" s="47.869626371713096" class="body"><height>82.125</height><width>331.12752516734633</width><p><text><![CDATA[   ]]></text><text color="15724527"><![CDATA[本作品实现的主要功能是:在PC端任选一个目标，机器人会自动跟随着目标移动。]]></text></p><meta><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><layout-element role="title" parent-id="0"/></layout></object><object id="14_30863873" type="text" x="-25974.486187401304" y="-20905.315999615115" r="0" s="37.74497962242939" class="body"><height>27.375</height><width>220.4993900181616</width><p align="center"><text><![CDATA[软件设计]]></text></p><meta><parentTemplate>explain-a-topic-dark</parentTemplate></meta><layout><layout-element role="title" parent-id="5"/></layout></object><object id="1" type="text" x="33559.41627602204" y="24443.19533109667" r="0" s="97.36861922821129" class="body"><height>82.125</height><width>441.75318734283786</width><p align="center"><text color="16775176"><![CDATA[基于核相关滤波的机器人跟随系统设计]]></text></p><p align="center"><text color="16248250"><![CDATA[作者：130712 赵尹发 3113004218]]></text></p><p align="center"><text color="16248250"><![CDATA[指导老师：岳洪伟]]></text></p></object><object id="2" type="text" x="-8318.75177300788" y="-3356.8314109815287" r="0" s="67.19691498113241" class="body"><height>27.375</height><width>97.24250838911546</width><p><text><![CDATA[硬件设计]]></text></p></object><object id="11" type="text" x="-8358.584635280555" y="552.1530864311746" r="0" s="67.19691498113241" class="body"><height>27.375</height><width>-96</width><p><text><![CDATA[软件设计]]></text></p></object><object id="12" type="text" x="-9970.825308111724" y="4673.935808811658" r="0" s="67.19691498113241" class="body"><height>27.375</height><width>-48</width><p><text><![CDATA[总结]]></text></p></object><object id="13" type="image" x="-35439.587310924624" y="7056.637821781693" r="0" s="23.84503903802736"><source w="550" h="413">RKx37N4YCIWsNvy.png<url>RKx37N4YCIWsNvy.png</url></source><sourceUrl>%E5%9B%BE%E7%89%871.png</sourceUrl></object><object id="14" type="text" x="-28465.488616839673" y="-16039.559871481066" r="0" s="27.61548749110372" class="body"><height>27.375</height><width>-132</width><p><text color="3247103"><![CDATA[1 ROS介绍]]></text><text><![CDATA[]]></text></p></object><object id="15" type="text" x="-25717.785710074433" y="-18903.491574847772" r="0" s="16.81498124131884" class="body"><height>136.875</height><width>552</width><p><text><![CDATA[   ]]></text><text color="15724527"><![CDATA[本系统基于ROS系统，用一种基于相关滤波的在线学习方法实现目标的跟踪.此方法通过在频域训练滤波器模板，利用快速傅里叶变换和逆快速傅里叶变换技术提高计算速度，计算出输入图像和目标模板的相关响应值。]]></text></p></object><object id="16" type="text" x="-25039.05" y="-14111.8" r="0" s="21.87229245493594" class="body"><height>27.375</height><width>480.0227501737736</width><p><text color="11793407"><![CDATA[2 KCF介绍(Kernelized Correlation Filter)]]></text></p></object><object id="19" type="button" x="23067.45567771082" y="-25656.24615793465" r="0" s="9.015338999337404" class="invisible"><type>invisible</type><size><w>800</w><h>445.1702524509261</h></size></object><object id="23" type="button" x="23889.189027367964" y="-19813.499392004378" r="0" s="9.998264183932925" class="invisible"><type>invisible</type><size><w>454.95491874083586</w><h>561.1386910432484</h></size></object><object id="22" type="image" x="23888.81351972772" y="-19813.504933013886" r="0" s="5.804269978311532"><source w="732" h="938">uHiA7n3tctvhl0r.png<url>uHiA7n3tctvhl0r.png</url></source><sourceUrl>%E5%9B%BE%E7%89%872.png</sourceUrl></object><object id="18" type="text" x="23100.23264808044" y="-25600.75000704876" r="-0.11910251592063563" s="8.726719626361636" class="body"><height>410.625</height><width>755.45</width><p><text color="15724527"><![CDATA[ROS（Robot Operating System）是一个适用于机器人的开源的元操作系统。]]></text></p><p><text color="15724527"><![CDATA[它提供了操作系统应有的服务，包括硬件抽象，底层设备控制，常用函数的实现，进程间消息传递，以及包管理。]]></text></p><p><text color="15724527"><![CDATA[它也提供用于获取、编译、编写、和跨计算机运行代码所需的工具和库函数。]]></text></p><p><text color="15724527"><![CDATA[ROS 的主要目标是为机器人研究和开发提供]]></text><text color="7326720"><![CDATA[代码复用]]></text><text color="15724527"><![CDATA[的支持。]]></text></p><p><text color="15724527"><![CDATA[ROS是一个分布式的进程（也就是“节点”）框架，这些进程被封装在易于被分享和发布的程序包和功能包中。]]></text></p><p><text color="15724527"><![CDATA[ROS也支持一种类似于代码储存库的联合系统，这个系统也可以实现工程的协作及发布。]]></text></p><p><text color="15724527"><![CDATA[这个设计可以使一个工程的开发和实现从文件系统到用户接口完全独立决策（不受ROS限制）。同时，所有的工程都可以被ROS的基础工具整合在一起。]]></text></p><p><text><![CDATA[]]></text></p></object><object id="21" type="button" x="23014.050627898814" y="-17646.332377137056" r="0" s="14.85425676846052" class="circle"><type>circle</type><size><w>820.7888021015935</w><h>820.7888021015935</h></size></object><object id="25" type="text" x="19450.68953161196" y="-19329.389233508286" r="-0.1191025159206363" s="21.258221306189167" class="body"><height>27.375</height><width>-132</width><p><text color="14938705"><![CDATA[ROS产品概览]]></text></p></object><object id="27" type="button" x="20473.341556600004" y="-15329.494628385859" r="-0.11910251592063645" s="4.910684268194138" class="invisible"><type>invisible</type><size><w>693.5684985693788</w><h>518.2565428761175</h></size></object><object id="24" type="image" x="20482.67874061614" y="-15340.06772548914" r="-0.11910251592063636" s="4.583251513725107"><source w="715" h="529">gLbTjtdO7Tk2N8U.jpg<url>gLbTjtdO7Tk2N8U.jpg</url></source><sourceUrl>360%E6%88%AA%E5%9B%BE20170520133942529.jpg</sourceUrl></object><object id="30" type="video" x="24950.546190041336" y="-15311.132655328827" r="0" s="8.376591707343767" onFocus="start" onLeave="pause"><source>NBPVbcXhbwoxTDG.mp4<url>NBPVbcXhbwoxTDG.mp4</url></source></object><object id="31" type="text" x="20460.94214305965" y="-13663.501294340407" r="0" s="13.640755158057946" class="body"><height>27.375</height><width>-84</width><p><text color="3518377"><![CDATA[ROS版本]]></text></p></object><object id="32" type="text" x="24826.469659603466" y="-13663.394468443155" r="0" s="13.640755158057946" class="body"><height>27.375</height><width>-192</width><p><text color="3518377"><![CDATA[Fetch 移动机器人]]></text></p></object><object id="33" type="text" x="30085.90670268368" y="-702.2063156856211" r="0.2541818978537517" s="23.79384444659894" class="body"><height>27.375</height><width>-324</width><p><text color="16711680"><![CDATA[KCF主要有俩个问题需要解决：]]></text></p></object><object id="26" type="text" x="27452.80620888875" y="504.9214260436693" r="0.2541818978537518" s="24.40673487702883" class="body"><height>27.375</height><width>-120</width><p><text color="3518377"><![CDATA[1 特征选取]]></text></p></object><object id="67" type="button" x="33639.466491089" y="10113.148632671337" r="0" s="13.278144298463284" class="invisible"><type>invisible</type><size><w>1204.8855074725088</w><h>431.6214732091154</h></size></object><object id="66" type="image" x="33505.25198505106" y="10573.813487525676" r="0" s="8.343850208119447"><source w="704" h="386">7o84uoBsNBF2gHZ.jpg<url>7o84uoBsNBF2gHZ.jpg</url></source><sourceUrl>360%E6%88%AA%E5%9B%BE20170521174400764.jpg</sourceUrl></object><object id="28" type="text" x="27672.9" y="6676.65" r="0.2541818978537518" s="24.40673487702883" class="body"><height>27.375</height><width>-144</width><p><text color="5974240"><![CDATA[2 分类器算法]]></text></p></object><object id="34" type="button" x="33558.00236572118" y="3476.155979080002" r="0.2541818978537514" s="7.373837350924815" class="invisible"><type>invisible</type><size><w>2490.385096958521</w><h>600</h></size></object><object id="35" type="text" x="26292.1" y="3367.6" r="0.22497567222659476" s="7.93559918245174" class="body"><height>520.125</height><width>442.3228854957728</width><p><text color="11592415"><![CDATA[  ]]></text><text><![CDATA[ 本系统的KCF算法是基于模板匹配的目标跟踪，匹配时用到的特征信息是梯度方向直方图（Histogram Of Oriented Gradient HOG）。首先将图像分成小的连通区域，我们把它叫细胞单元。然后采集细胞单元中各像素点的梯度的或边缘的方向直方图。最后把这些直方图组合起来就可以构成特征描述器。把这些局部直方图在图像的更大的范围内（我们把它叫区间或block）进行对比度归一化（contrast-normalized），所采用的方法是：先计算各直方图在这个区间（block）中的密度，然后根据这个密度对区间中的各个细胞单元做归一化。通过这个归一化后，能对光照变化和阴影获得更好的效果。 HOG特征检测算法的几个步骤：]]></text><text color="16711680"><![CDATA[颜色空间归一化—>梯度计算—>梯度方向直方图—>重叠块直方图归一化—>HOG特征]]></text><text color="11592415"><![CDATA[。]]></text><text><![CDATA[下面分别对其进行介绍。]]></text></p></object><object id="36" type="button" x="29578.31418524574" y="3196.7408627620166" r="0.22497567222659412" s="2.775049594805076" class="circle"><type>circle</type><size><w>800</w><h>800</h></size></object><object id="40" type="button" x="32297.935687702367" y="3207.439528883569" r="0.22497567222659412" s="2.775049594805076" class="circle"><type>circle</type><size><w>800</w><h>800</h></size></object><object id="41" type="button" x="35148.307234779124" y="3218.652553953274" r="0.22497567222659412" s="2.775049594805076" class="circle"><type>circle</type><size><w>800</w><h>800</h></size></object><object id="42" type="button" x="38149.900312612444" y="3230.48280976076" r="0.22497567222659412" s="2.775049594805076" class="circle"><type>circle</type><size><w>800</w><h>800</h></size></object><object id="43" type="button" x="41125.26108409001" y="3174.4176844122394" r="0.22497567222659415" s="2.8080146700147184" class="circle"><type>circle</type><size><w>800</w><h>800</h></size></object><object id="47" type="button" x="29585.7919580621" y="2564.582601912649" r="3.163280608576018e-17" s="0.785516257443861" class="invisible"><type>invisible</type><size><w>1785.3852284578625</w><h>647.0584834814072</h></size></object><object id="38" type="text" x="29528.771105567346" y="2379.611139689209" r="0" s="4.676334254713623" class="body"><height>27.375</height><width>-192</width><p><text color="16248250"><![CDATA[1 颜色空间归一化]]></text></p></object><object id="39" type="text" x="29596.34413554796" y="2640.433682745863" r="-3.965623921473908e-17" s="2.506347948365049" class="body"><height>136.875</height><width>558.45</width><p><text><![CDATA[   由于图像的采集环境、装置等因素，采集到的图像效果可能不是很好，容易出现误检或漏检的情况，所以需要对采集到的图像进行图像预处理，主要是处理]]></text><text color="7326720"><![CDATA[光线太暗或太强]]></text><text><![CDATA[的情况，这里有两次处理：图像灰度化、Gamma校正。]]></text></p></object><object id="46" type="button" x="29575.4744452405" y="3305.992045918208" r="-5.985991167243323e-17" s="1.660415644106391" class="invisible"><type>invisible</type><size><w>1029.4040915003889</w><h>490.1009762399368</h></size></object><object id="37" type="image" x="29553.550000000003" y="3694.7499999999995" r="-3.880069921656523e-17" s="1.2808059622969525"><source w="184" h="39">yLtRzcPzVRF14qb.jpg<url>yLtRzcPzVRF14qb.jpg</url></source><sourceUrl>360%E6%88%AA%E5%9B%BE20170521110438733.jpg</sourceUrl></object><object id="52" type="button" x="32290.83486438354" y="2952.207552354226" r="0" s="2.016801393684951" class="invisible"><type>invisible</type><size><w>831.7979251745878</w><h>666.2760468647616</h></size></object><object id="51" type="image" x="32232.200000000008" y="2974.8495913141487" r="0" s="1.3618631122557638"><source w="812" h="287">dPC5UFoP0W3wm6R.jpg<url>dPC5UFoP0W3wm6R.jpg</url></source><sourceUrl>1346396961_6062.jpg</sourceUrl></object><object id="44" type="text" x="29610.93833727845" y="3012.3024737203446" r="-3.965623921473908e-17" s="2.506347948365049" class="body"><height>82.125</height><width>695.6312799691343</width><p><text color="3518377"><![CDATA[(1) 图像灰度化]]></text></p><p><text color="3518377"><![CDATA[   对于彩色图像，将RGB分量转化成灰度图像，其转化公式为：]]></text></p><p align="center"><text><![CDATA[Gray = 0.3 * R + 0.59 * G + 0.11 * B]]></text></p></object><object id="45" type="text" x="29572.6" y="3528.4999999999995" r="-3.965623921473908e-17" s="2.506347948365049" class="body"><height>164.25</height><width>665.008816798939</width><p><text color="3518377"><![CDATA[(2) Gamma校正]]></text></p><p><text color="3518377"><![CDATA[   在图像照度不均匀的情况下，可以通过Gamma校正，将图像整体亮度提高或降低。在实际中可以采用两种不同的方式进行Gamma标准化，平方根、对数法。这里我们采用平方根的办法，公式如下（其中γ=0.5）：]]></text></p><p><text><![CDATA[]]></text></p></object><object id="48" type="text" x="32262.900000000005" y="2395.9500000000003" r="0" s="4.000000000000002" class="body"><height>27.375</height><width>-168</width><p><text color="5974240"><![CDATA[2 计算图像梯度]]></text></p></object><object id="50" type="text" x="32293.249999999993" y="2613.0000000000005" r="0" s="2.000000000000001" class="body"><height>82.125</height><width>807.4162364556377</width><p><text><![CDATA[   计算图像横坐标和纵坐标方向的梯度，并据此计算每个像素位置的梯度方向值；求导操作不仅能够捕获轮廓，人影和一些纹理信息，还能进一步弱化光照的影响。图像中像素点(x,y)的梯度为：]]></text></p></object><object id="53" type="text" x="32293.799999999992" y="3397.4495913141486" r="0" s="2.000000000000001" class="body"><height>136.875</height><width>771.9842883307554</width><p><text><![CDATA[    最常用的方法是：首先用[-1,0,1]梯度算子对原图像做卷积运算，得到x方向（水平方向，以向右为正方向）的梯度分量gradscalx，然后用[1,0,-1]梯度算子对原图像做卷积运算，得到y方向（竖直方向，以向上为正方向）的梯度分量gradscaly。然后再用以上公式计算该像素点的梯度大小和方向。]]></text></p></object><object id="57" type="button" x="35118.06865784233" y="3079.28860496151" r="0" s="2.5839736955734356" class="invisible"><type>invisible</type><size><w>689.7173889070054</w><h>565.4123503442911</h></size></object><object id="54" type="text" x="35175.70000000001" y="2493.749999999999" r="0" s="4.000000000000002" class="body"><height>27.375</height><width>319.52727601663764</width><p><text color="15728820"><![CDATA[3 构建梯度方向直方图cell]]></text></p></object><object id="55" type="text" x="35126.49999999999" y="2838.3399999999997" r="3.549726206990531e-17" s="2.8000000000000007" class="body"><height>164.25</height><width>577.15</width><p><text><![CDATA[    将图像划分成若干个cells（单元），8x8=64个像素为一个cell，相邻的cell之间不重叠。在每个cell内统计梯度方向直方图，将所有梯度方向划分为9个bin（即9维特征向量），作为直方图的横轴，角度范围所对应的梯度值累加值作为直方图纵轴，每个bin的角度范围如下:]]></text></p></object><object id="56" type="image" x="35147.400000000016" y="3421.7000000000003" r="0.22497567222659437" s="2.057411422798195"><source w="600" h="295">Zm6lnBQZpcOhMhQ.jpg<url>Zm6lnBQZpcOhMhQ.jpg</url></source><sourceUrl>360%E6%88%AA%E5%9B%BE20170521113321422.jpg</sourceUrl></object><object id="61" type="button" x="38109.74676844061" y="3160.6824624127235" r="0" s="2.1719953821649094" class="invisible"><type>invisible</type><size><w>764.2686838249975</w><h>672.6104401864563</h></size></object><object id="49" type="text" x="38137.55000000001" y="2513.1999999999994" r="0" s="4.204960412267696" class="body"><height>27.375</height><width>-324</width><p><text color="16775176"><![CDATA[4 构建块内(block)梯度直方图]]></text></p></object><object id="59" type="image" x="38099.00000000001" y="3438.2499999999995" r="-5.538855652218434e-17" s="1.794456112174111"><source w="566" h="191">Sq6RjmJTXhzzxKG.jpg<url>Sq6RjmJTXhzzxKG.jpg</url></source><sourceUrl>360%E6%88%AA%E5%9B%BE20170521114636020.jpg</sourceUrl></object><object id="58" type="text" x="38110.950000000004" y="2923.2499999999995" r="9.374899435227615e-17" s="2.1203925329002047" class="body"><height>273.75</height><width>729.4768061023944</width><p><text><![CDATA[    由于局部光照的变化以及前景-背景对比度的变化，使得梯度强度的变化范围非常大。这就需要对梯度强度做归一化。归一化能够进一步地对光照、阴影和边缘进行压缩。]]></text></p><p><text><![CDATA[    作者采取的办法是：把各个细胞单元组合成大的、空间上连通的区间（blocks）。这样，一个block内所有cell的特征向量串联起来便得到该block的HOG特征。这些区间是互有重叠的，这就意味着：每一个单元格的特征会以不同的结果多次出现在最后的特征向量中。我们将归一化之后的块描述符（向量）就称之为HOG描述符。]]></text></p><p><text><![CDATA[    接下分别对每个block进行标准化，一个block内有4个cell，每个cell含9维特征向量，故每个block就由4x9=36维特征向量来表征。]]></text></p></object><object id="60" type="text" x="38116.5126495971" y="3756.900622299267" r="9.374899435227615e-17" s="2.1203925329002047" class="body"><height>82.125</height><width>760.5669675336818</width><p><text><![CDATA[   由于L2-norm简单且在检测中效果相对较好，故一般采用它。经过上述对有重叠部分block的直方图归一化之后，将所有block的特征向量都组合起来，这就是HOG特征，这个特征向量就可以用来表征整个图像了。]]></text></p></object><object id="64" type="button" x="41096.77291449933" y="3021.984785175129" r="3.897005902528815e-17" s="2.550479426557655" class="invisible"><type>invisible</type><size><w>697.9539581737995</w><h>619.0041016781208</h></size></object><object id="62" type="text" x="41115.80000000001" y="3107.8" r="3.2068246218124e-17" s="3.0994003575899125" class="body"><height>410.625</height><width>547.9490667005755</width><p><text><![CDATA[   Dalal提出的Hog特征提取的过程：把样本图像分割为若干个像素的单元（cell），把梯度方向平均划分为9个区间（bin），在每个单元里面对所有像素的梯度方向在各个方向区间进行直方图统计，得到一个9维的特征向量，每相邻的4个单元构成一个块（block），把一个块内的特征向量联起来得到36维的特征向量，用块对样本图像进行扫描，扫描步长为一个单元。最后将所有块的特征串联起来，就得到了图像的特征。]]></text><text color="16775176"><![CDATA[例如，对于64*128的图像而言，每16*16的像素组成一个cell，每2*2个cell组成一个块，因为每个cell有9个特征，所以每个块内有4*9=36个特征，以8个像素为步长，那么，水平方向将有7个扫描窗口，垂直方向将有15个扫描窗口。也就是说，64*128的图片，总共有36*7*15=3780个特征。]]></text></p></object><object id="63" type="text" x="41052.60000000001" y="2327.3499999999995" r="-3.7542181643046443e-17" s="5.294968456589114" class="body"><height>27.375</height><width>-60</width><p><text><![CDATA[ ]]></text><text color="16775176"><![CDATA[小]]></text><text color="14938705"><![CDATA[结]]></text></p></object><object id="65" type="text" x="33710.91011863844" y="8185.092126513408" r="0" s="14.95657360204962" class="body"><height>82.125</height><width>1035.514893758571</width><p><text><![CDATA[   我们都知道机器学习的任务有俩个：分类和回归。恰好目标跟踪问题可以看成一个线性回归的问题。这里我们选用支持向量机（Support Vector Machine，SVM）的机器学习框架来作为问题的解析工具。因此支持向量回归模型可形式化为：]]></text></p></object><object id="70" type="button" x="-626.2" y="8800.089900286292" r="0" s="16.795076815608198" class="invisible"><type>invisible</type><size><w>1126.8686278157566</w><h>350.80385317408195</h></size></object><object id="69" type="text" x="-799.4" y="8550" r="0" s="20.473267244716247" class="body"><height>191.625</height><width>854.1562265591269</width><p><text><![CDATA[KCF算法最大的优点在于速度快，能够很好的实现实时性。]]></text></p><p><text><![CDATA[缺点作者也在论文中说了：]]></text></p><p><text color="16775176"><![CDATA[（1）没有尺度不变性。]]></text><text><![CDATA[KCF因为在跟踪过程当中目标框是已经设定好的，从始至终大小为发生变化，但是我们的跟踪序列当中目标大小时有发生变化，这个就会导致跟踪器跟踪过程当中目标框漂移，从而导致跟踪失败。]]></text></p><p><text color="16775176"><![CDATA[（2）没有处理遮挡的问题。]]></text><text><![CDATA[KCF对在跟踪过程当中当目标被遮挡时候的处理问题没有进行很好的解决，不过呢，这个问题一直也算是跟踪界的一个大难题。]]></text></p></object><object id="71" type="button" x="-604.0499999999998" y="12925.67932289522" r="0" s="2.59862862638206" class="invisible"><type>invisible</type><size><w>800</w><h>731.2774556341708</h></size></object><object id="78" type="button" x="-576.2248931116915" y="12402.785809425844" r="0" s="1.387870850715906" class="invisible"><type>invisible</type><size><w>1397.0000037157</w><h>548.7499999646097</h></size></object><object id="72" type="text" x="-575.6" y="12541.45" r="0" s="3.979167429322523" class="body"><height>109.5</height><width>481.4610348546465</width><p><text><![CDATA[在四年里，我非常感谢五邑大学提供的学习环境,以及老师们对我的培养。]]></text></p><p><text><![CDATA[感谢实验室同学，老师的帮助。]]></text></p><p><text><![CDATA[特别感谢我的毕设指导老师--岳洪伟。]]></text></p></object><object id="73" type="text" x="-572.3499999999999" y="12158.95" r="0" s="7.839999999999999" class="body"><height>27.375</height><width>71.03523465068555</width><p><text color="16775176"><![CDATA[致谢]]></text></p></object><object id="76" type="image" x="-604.1499999999999" y="13454.25" r="0" s="0.3889980103770148"><source w="1800" h="1620">5z7qzzmjfg.jpg<url>5z7qzzmjfg.jpg</url></source><sourceUrl>http%3A%2F%2F0103.static.prezi.com.s3.amazonaws.com%2Fmedia%2Fe%2F6%2F8%2Ffe592b7c8c2ce148b14e5f19fdd2b390eead3.jpg</sourceUrl></object><object id="77" type="text" x="-604.1249405128432" y="13426.464854188856" r="0" s="3.979167429322523" class="body"><height>27.375</height><width>-156</width><p><text color="16711680"><![CDATA[谢谢各位老师!]]></text></p></object><object id="17" type="text" x="6549.580961410565" y="-20411.167024313858" r="0" s="97.36861922821129" class="body"><height>27.375</height><width>0</width><p><text><![CDATA[]]></text></p></object></zui-table><path><s><eagle o="1"/></s><s><eagle o="0"/></s><s><eagle o="12_4"/></s><s><eagle o="2"/></s><s><eagle o="3"/></s><s><eagle o="11"/></s><s><eagle o="5"/></s><s><eagle o="15"/></s><s><eagle o="14"/></s><s><eagle o="9"/></s><s><eagle o="19"/></s><s><eagle o="18"/></s><s><eagle o="21"/></s><s><eagle o="27"/></s><s><eagle o="23"/></s><s><eagle o="30"/></s><s><eagle o="16"/></s><s><eagle o="6"/></s><s><eagle o="29"/></s><s><eagle o="26"/></s><s><eagle o="35"/></s><s><eagle o="36"/></s><s><eagle o="47"/></s><s><eagle o="46"/></s><s><eagle o="40"/></s><s><eagle o="52"/></s><s><eagle o="57"/></s><s><eagle o="61"/></s><s><eagle o="64"/></s><s><eagle o="28"/></s><s><eagle o="67"/></s><s><eagle o="12"/></s><s><eagle o="70"/></s><s><eagle o="78"/></s><s><eagle o="76"/></s><s><eagle o="20"/></s></path><style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('kt.keg');
+	fontFamily: body;
+	font-class: body;
+	font-style: normal;
+	font-weight: normal;
+	font-family: kt;
+}
+
+@font-face
+{
+	src: url('ht.keg');
+	fontFamily: head;
+	font-class: head;
+	font-style: normal;
+	font-weight: normal;
+	font-family: ht;
+}
+
+@font-face
+{
+	src: url('Arimo-BoldItalic.keg');
+	fontFamily: strong;
+	font-class: strong;
+	font-style: italic;
+	font-weight: bold;
+	font-family: Arimo;
+}
+
+@font-face
+{
+	src: url('Arimo-Italic.keg');
+	fontFamily: undefined;
+	font-class: undefined;
+	font-style: italic;
+	font-weight: normal;
+	font-family: Arimo;
+}
+
+@font-face
+{
+	src: url('Arimo-Regular.keg');
+	font-style: normal;
+	font-weight: normal;
+	font-family: Arimo;
+}
+
+@font-face
+{
+	src: url('Arimo-Bold.keg');
+	font-style: normal;
+	font-weight: bold;
+	font-family: Arimo;
+}
+
+.line1
+{
+	color: #fff;
+	gradEndColor: #fff;
+	gradStartColor: #fff;
+}
+
+.line2
+{
+	color: #8eb055;
+	gradEndColor: #8eb055;
+	gradStartColor: #8eb055;
+}
+
+.line3
+{
+	color: #7db7f2;
+	gradEndColor: #7db7f2;
+	gradStartColor: #7db7f2;
+}
+
+.line4
+{
+	color: #e3b241;
+	gradEndColor: #e3b241;
+	gradStartColor: #e3b241;
+}
+
+.line5
+{
+	color: #a85050;
+	gradEndColor: #a85050;
+	gradStartColor: #a85050;
+}
+
+.poly1
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	color: #2a2a2a;
+	gradEndColor: #fff;
+	gradStartColor: #fff;
+}
+
+.poly2
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	color: #2a2a2a;
+	gradEndColor: #8eb055;
+	gradStartColor: #8eb055;
+}
+
+.poly3
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	color: #2a2a2a;
+	gradEndColor: #7db7f2;
+	gradStartColor: #7db7f2;
+}
+
+.poly4
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	color: #2a2a2a;
+	gradEndColor: #e3b241;
+	gradStartColor: #e3b241;
+}
+
+.poly5
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	color: #2a2a2a;
+	gradEndColor: #a85050;
+	gradStartColor: #a85050;
+}
+
+Background
+{
+	gradEnd: #000;
+	gradStart: #555;
+}
+
+Grid
+{
+	color: #5e5e5e;
+}
+
+ZArrow
+{
+	borderAlpha: 0;
+	borderColor: #333;
+	borderThickness: 1.5;
+	gradEndAlpha: .7;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+}
+
+ZCircle
+{
+	borderAlpha: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+ZCurveLine
+{
+	color: #000;
+}
+
+ZFrame.bracket
+{
+	gradEndAlpha: .4;
+	gradEndColor: #fff;
+	gradStartAlpha: .4;
+	gradStartColor: #fff;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.circle
+{
+	gradEndAlpha: .4;
+	gradEndColor: #fff;
+	gradStartAlpha: .4;
+	gradStartColor: #fff;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.roundrect
+{
+	borderAlpha: 0;
+	borderColor: #000;
+	borderThickness: 5;
+	gradEndAlpha: 0.3;
+	gradEndColor: #333;
+	gradStartAlpha: 0.3;
+	gradStartColor: #333;
+	padding: 1.03;
+	radius: 8;
+}
+
+ZLabel
+{
+	lockTintAlpha: 0.15;
+	padding: 1.2;
+}
+
+ZLabel.body
+{
+	color: #fff;
+	fontFamily: body;
+}
+
+ZLabel.body-background
+{
+	background-alpha: 0.9;
+	background-color: #333;
+	background-padding: 10;
+}
+
+ZLabel.head
+{
+	color: #7db7f2;
+	fontFamily: head;
+}
+
+ZLabel.head-background
+{
+	background-alpha: 0.9;
+	background-color: #000;
+	background-padding: 4;
+}
+
+ZLabel.strong
+{
+	color: #fff;
+	fontFamily: strong;
+}
+
+ZLabel.strong-background
+{
+	background-alpha: 0.8;
+	background-color: #e3b241;
+	background-padding: 4;
+}
+
+ZLine
+{
+	color: #333;
+	lockTintAlpha: 0;
+}
+
+ZMarker
+{
+	alpha: 0.6;
+	color: #a85050;
+}
+
+ZPath
+{
+	alpha: 1;
+	color: #40abe6;
+	textColor: #fff;
+	thickness: 3;
+}
+
+ZPath Ball.base
+{
+	alpha: 1;
+	fillColor: #40abe6;
+	radius: 12;
+}
+
+ZPath Ball.mid
+{
+	alpha: .5;
+	fillColor: #40abe6;
+	radius: 8;
+}
+
+ZPoly
+{
+	borderAlpha: 1;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+]]></style><hash>68d7d55d</hash><config>s5aATWh1LRabwwAbC6UABtllHwjXxZ+Lyw==</config></zuiprezi>
