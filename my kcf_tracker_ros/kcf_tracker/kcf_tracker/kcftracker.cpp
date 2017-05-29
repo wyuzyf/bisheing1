@@ -477,11 +477,13 @@ cv::Point2f KCFTracker::detect(cv::Mat z, cv::Mat x, float &peak_value)
 	//subpixel peak estimation, coordinates will be non-integer
 	cv::Point2f p((float)pi.x, (float)pi.y);
 
-	if (pi.x > 0 && pi.x < res.cols - 1) {
+	if (pi.x > 0 && pi.x < res.cols - 1) 
+	{
 		p.x += subPixelPeak(res.at<float>(pi.y, pi.x - 1), peak_value, res.at<float>(pi.y, pi.x + 1));
 	}
 
-	if (pi.y > 0 && pi.y < res.rows - 1) {
+	if (pi.y > 0 && pi.y < res.rows - 1) 
+	{
 		p.y += subPixelPeak(res.at<float>(pi.y - 1, pi.x), peak_value, res.at<float>(pi.y + 1, pi.x));
 	}
 
@@ -521,11 +523,13 @@ cv::Mat KCFTracker::gaussianCorrelation(cv::Mat x1, cv::Mat x2)
 	cv::Mat c = cv::Mat(cv::Size(size_patch[1], size_patch[0]), CV_32F, cv::Scalar(0));
 
 	// HOG featuresÃ·»°HOGÃÿ’˜
-	if (_hogfeatures) {
+	if (_hogfeatures) 
+	{
 		cv::Mat caux;
 		cv::Mat x1aux;
 		cv::Mat x2aux;
-		for (int i = 0; i < size_patch[2]; i++) {
+		for (int i = 0; i < size_patch[2]; i++) 
+		{
 			x1aux = x1.row(i);   // Procedure do deal with cv::Mat multichannel bug
 			x1aux = x1aux.reshape(1, size_patch[0]);
 			x2aux = x2.row(i).reshape(1, size_patch[0]);

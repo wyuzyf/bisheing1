@@ -38,7 +38,10 @@ static const std::string RGB_WINDOW = "RGB Image window";
 float linear_speed = 0;
 float rotation_speed = 0;
 
+//线速度的增量 / 距离的增量 ，距离每增长1m，线速度增加对应的数值
 float k_linear_speed = (Max_linear_speed - Min_linear_speed) / (Max_distance - Min_distance);
+
+// k_linear_speed * Min_distance 最小距离的速度的增量，设定的最小线速度 - 增量 = 实际最小起始线速度
 float h_linear_speed = Min_linear_speed - k_linear_speed * Min_distance;
 
 float k_rotation_speed = 0.004;
@@ -205,6 +208,7 @@ public:
 			distance /= num_depth_points;
 
 			//calculate linear speed 计算要发布给小车的线速度
+			//因为我收不到底层电机的反馈，所以在没有时间参数的情况，只能这样计算线速度
 			if (distance > Min_distance)   //前进
 				linear_speed = distance * k_linear_speed + h_linear_speed;
 			else if (distance <= Min_distance - 0.5)  //后退
