@@ -50,7 +50,7 @@ the use of this software, even if advised of the possibility of such damage.
 
 namespace FFTTools
 {
-	// Previous declarations, to avoid warnings
+	// Previous declarationsÉùÃ÷, to avoid warnings
 	cv::Mat fftd(cv::Mat img, bool backwards = false);
 	cv::Mat real(cv::Mat img);
 	cv::Mat imag(cv::Mat img);
