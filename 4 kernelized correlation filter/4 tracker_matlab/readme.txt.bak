@@ -52,7 +52,7 @@ DCF, MOSSE) by calling it with different commands:
    and show average statistics. 'choose' will select one interactively.
 
  run_tracker VIDEO KERNEL
-   Choose a KERNEL. 'gaussian'/'polynomial  多项式' to run KCF, 'linear' for DCF.
+   Choose a KERNEL. 'gaussian'/'polynomial多项式' to run KCF, 'linear' for DCF.
 
  run_tracker VIDEO KERNEL FEATURE
    Choose a FEATURE type, either 'hog' or 'gray' (raw pixels).
