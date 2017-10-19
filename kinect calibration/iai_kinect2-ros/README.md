@@ -11,8 +11,8 @@ We get a lot of repeated questions, so when you have a problem,
 we urge everyone to check the [github issues  (including closed ones)](https://github.com/code-iai/iai_kinect2/issues?utf8=%E2%9C%93&q=is%3Aissue). 
 Your issue is very likely discussed there already.
 
-The goal of this project is to give you a driver and the tools needed to receive data from the Kinect-2 sensor, 
-in a way useful for robotics. You will still need to know how to use ROS to make use of it. 
+The goal of this project is to give you a driver （驱动） and the tools needed to receive data from the Kinect-2 sensor（从KINECT-2接收数据的工具）, 
+in a way useful for robotics（用在机器人方面）. You will still need to know how to use ROS to make use of it. 
 Please follow the [ROS tutorials](http://wiki.ros.org/ROS/Tutorials). 
 You will also need to learn how to work with point-clouds, or depth-clouds, 
 or images (computer vision) to do useful things with the data. 
